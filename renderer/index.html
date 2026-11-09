@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>Desk Buddy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="stage">
+    <div id="bubble" hidden><span id="bubbleText"></span></div>
+
+    <div id="buddy" data-mood="neutral">
+      <div id="shadow"></div>
+      <div id="rig">
+        <div class="limb leg l"><i class="shoe"></i></div>
+        <div class="limb leg r"><i class="shoe"></i></div>
+        <div id="body"></div>
+        <div class="limb arm l"><div class="fore"><i class="hand"></i></div></div>
+        <div class="limb arm r"><div class="fore"><i class="hand"></i></div></div>
+
+        <div id="headWrap">
+          <div id="head">
+            <img id="headImg" src="../assets/head.png" width="360" height="400" alt="" draggable="false">
+            <div id="mouth"></div>
+            <div class="brow l"></div>
+            <div class="brow r"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="renderer.js"></script>
+</body>
+</html>

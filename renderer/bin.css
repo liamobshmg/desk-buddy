@@ -1,0 +1,109 @@
+html, body {
+  margin: 0;
+  width: 240px;
+  height: 230px;
+  overflow: hidden;
+  background: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+#stage {
+  position: relative;
+  width: 240px;
+  height: 230px;
+  pointer-events: none;
+}
+
+/* ---------- muffled voice from inside ---------- */
+#msg {
+  position: absolute;
+  left: 10px;
+  width: 220px;
+  bottom: 138px;
+  text-align: center;
+}
+#msg[hidden] { display: none; }
+#msgText {
+  display: inline-block;
+  max-width: 200px;
+  padding: 7px 12px 8px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.25;
+  border: 3px dashed #555;
+  border-radius: 14px;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+/* ---------- the bin: a dented metal garbage can ---------- */
+#bin {
+  position: absolute;
+  left: 70px;
+  top: 108px;
+  width: 100px;
+  height: 120px;
+  pointer-events: auto;
+  cursor: pointer;
+}
+#can {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 14px;
+  bottom: 0;
+  background:
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.18) 0 3px, rgba(0, 0, 0, 0) 3px 14px),
+    linear-gradient(90deg, #5d626b, #a8adb6 38%, #8a8f99 62%, #5a5f68);
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 8% 100%);
+  border-radius: 0 0 10px 10px;
+}
+#inside {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 8px;
+  height: 14px;
+  border-radius: 50%;
+  background: #08090b;
+}
+#lid {
+  position: absolute;
+  left: 2px;
+  top: 6px;
+  width: 96px;
+  height: 14px;
+  background: linear-gradient(#b6bbc4, #7d828c);
+  border-radius: 8px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+  transform-origin: 6px 8px;
+  transition: transform 0.18s ease-out;
+}
+#lid .knob {
+  position: absolute;
+  left: 34px;
+  top: -8px;
+  width: 28px;
+  height: 9px;
+  background: #70757f;
+  border-radius: 6px 6px 0 0;
+}
+#bin.open #lid { transform: rotate(-58deg); }
+#bin.shaking { animation: binShake 0.09s linear 9; }
+#bin.wiggle { animation: binShake 0.09s linear 4; }
+
+@keyframes binShake {
+  0% { translate: -2px 0; rotate: -1deg; }
+  50% { translate: 2px 0; rotate: 1deg; }
+  100% { translate: -2px 0; rotate: -1deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #bin.shaking, #bin.wiggle { animation: none; }
+  #lid { transition: none; }
+}

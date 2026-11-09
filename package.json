@@ -1,0 +1,41 @@
+{
+  "name": "desk-buddy",
+  "version": "1.0.0",
+  "description": "A little cutout-head desktop companion that walks around and says things.",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable -c.win.signAndEditExecutable=false"
+  },
+  "build": {
+    "appId": "ca.obrienstudio.deskbuddy",
+    "productName": "Desk Buddy",
+    "files": [
+      "main.js",
+      "preload.js",
+      "binPreload.js",
+      "phrases.json",
+      "renderer/**",
+      "assets/**"
+    ],
+    "win": {
+      "target": "portable",
+      "icon": "build/icon.ico"
+    },
+    "portable": {
+      "artifactName": "Desk-Buddy.exe"
+    },
+    "electronFuses": {
+      "runAsNode": false,
+      "enableNodeOptionsEnvironmentVariable": false,
+      "enableNodeCliInspectArguments": false,
+      "enableEmbeddedAsarIntegrityValidation": true,
+      "onlyLoadAppFromAsar": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^45.2.3",
+    "electron-builder": "^26.18.0"
+  }
+}

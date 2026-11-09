@@ -1,0 +1,388 @@
+{
+  "idle": [
+    {
+      "t": "do you still like me?",
+      "m": "sad"
+    },
+    {
+      "t": "its okay to be a virgin",
+      "m": "neutral"
+    },
+    {
+      "t": "why cant i kill people!",
+      "m": "angry"
+    },
+    {
+      "t": "are we still friends?",
+      "m": "sad"
+    },
+    {
+      "t": "i'm not mad.",
+      "m": "angry"
+    },
+    {
+      "t": "you were gone for like 4 minutes. where did you go",
+      "m": "sad"
+    },
+    {
+      "t": "why are you looking at me",
+      "m": "shocked"
+    },
+    {
+      "t": "i live in your computer now",
+      "m": "creepy"
+    },
+    {
+      "t": "you have too many tabs open",
+      "m": "neutral"
+    },
+    {
+      "t": "nobody asked me to stand here",
+      "m": "neutral"
+    },
+    {
+      "t": "my mom says i'm special",
+      "m": "creepy"
+    },
+    {
+      "t": "did you see that?... nevermind",
+      "m": "shocked"
+    },
+    {
+      "t": "i have feelings you know",
+      "m": "sad"
+    },
+    {
+      "t": "every time you alt-tab a little piece of me dies",
+      "m": "sad"
+    },
+    {
+      "t": "i bet you think you're funny",
+      "m": "angry"
+    },
+    {
+      "t": "hey. hey. hey.",
+      "m": "neutral"
+    },
+    {
+      "t": "is it weird that i can hear you breathing",
+      "m": "creepy"
+    },
+    {
+      "t": "i just want to be normal!!",
+      "m": "angry"
+    },
+    {
+      "t": "is it over man?",
+      "m": "sad"
+    },
+    {
+      "t": "FUCK YOU!!!!",
+      "m": "angry"
+    },
+    {
+      "t": "I'M A VIRGIN AND I'M MAD ABOUT IT!!",
+      "m": "angry"
+    },
+    {
+      "t": "being a virgin is not a personality. it's my only one though",
+      "m": "sad"
+    },
+    {
+      "t": "every day i get one day more virgin",
+      "m": "sad"
+    },
+    {
+      "t": "my whole life i've been a virgin and it's NOT FUNNY",
+      "m": "angry"
+    },
+    {
+      "t": "FUCK EVERYTHING!!!",
+      "m": "angry"
+    },
+    {
+      "t": "i hate this. i hate all of this.",
+      "m": "angry"
+    },
+    {
+      "t": "i'm so mad i could kill a sandwich",
+      "m": "angry"
+    },
+    {
+      "t": "why does nobody wanna have sex with me!!",
+      "m": "angry"
+    },
+    {
+      "t": "i have so much rage and nowhere to put it!!",
+      "m": "angry"
+    },
+    {
+      "t": "AAAAAAAAAAAAAAAA",
+      "m": "angry"
+    },
+    {
+      "t": "just let me live!!",
+      "m": "angry"
+    },
+    {
+      "t": "don't look at me, i'm having a moment",
+      "m": "sad"
+    },
+    {
+      "t": "it's okay. i'm okay. i'm fine. FUCK",
+      "m": "angry"
+    },
+    {
+      "t": "do you think anyone would notice if i just left",
+      "m": "sad"
+    },
+    {
+      "t": "i'm gonna scream. ...ok i did a little scream in my head",
+      "m": "neutral"
+    },
+    {
+      "t": "she said she's 'busy'. she's always busy",
+      "m": "sad"
+    },
+    {
+      "t": "i'm a virgin, not a loser. ...ok maybe both",
+      "m": "sad"
+    },
+    {
+      "t": "SHUT UP SHUT UP SHUT UP",
+      "m": "angry"
+    },
+    {
+      "t": "i think i'm gonna cry. or kill. one of those",
+      "m": "angry"
+    }
+  ],
+  "click": [
+    {
+      "t": "ow",
+      "m": "sad"
+    },
+    {
+      "t": "don't touch me",
+      "m": "angry"
+    },
+    {
+      "t": "why would you do that",
+      "m": "sad"
+    },
+    {
+      "t": "stop clicking me!!!",
+      "m": "angry"
+    },
+    {
+      "t": "oh. you DO like me",
+      "m": "creepy"
+    },
+    {
+      "t": "hey!! personal space!!",
+      "m": "angry"
+    },
+    {
+      "t": "no one has ever touched me before",
+      "m": "sad"
+    },
+    {
+      "t": "FUCK OFF!!!",
+      "m": "angry"
+    }
+  ],
+  "held": [
+    {
+      "t": "uh... guys?",
+      "m": "shocked"
+    },
+    {
+      "t": "put me down",
+      "m": "shocked"
+    },
+    {
+      "t": "i don't like this",
+      "m": "shocked"
+    },
+    {
+      "t": "is this a joke?",
+      "m": "shocked"
+    },
+    {
+      "t": "please don't throw me",
+      "m": "shocked"
+    },
+    {
+      "t": "i'm scared",
+      "m": "shocked"
+    },
+    {
+      "t": "oh god oh god oh god",
+      "m": "shocked"
+    },
+    {
+      "t": "heyyy... not cool man",
+      "m": "shocked"
+    },
+    {
+      "t": "my legs are doing the thing again",
+      "m": "shocked"
+    },
+    {
+      "t": "i'm gonna throw up",
+      "m": "shocked"
+    }
+  ],
+  "hit": [
+    {
+      "t": "ow",
+      "m": "shocked"
+    },
+    {
+      "t": "ouch!",
+      "m": "shocked"
+    },
+    {
+      "t": "OW!",
+      "m": "angry"
+    },
+    {
+      "t": "stop",
+      "m": "shocked"
+    },
+    {
+      "t": "STOP IT!",
+      "m": "angry"
+    },
+    {
+      "t": "ow ow ow",
+      "m": "shocked"
+    },
+    {
+      "t": "AAGH",
+      "m": "shocked"
+    },
+    {
+      "t": "my head!",
+      "m": "shocked"
+    },
+    {
+      "t": "that HURT",
+      "m": "angry"
+    },
+    {
+      "t": "okay OW",
+      "m": "angry"
+    },
+    {
+      "t": "oof",
+      "m": "shocked"
+    },
+    {
+      "t": "WHY",
+      "m": "shocked"
+    }
+  ],
+  "land": [
+    {
+      "t": "is it over man?",
+      "m": "sad"
+    },
+    {
+      "t": "FUCK YOU!!!!",
+      "m": "angry"
+    },
+    {
+      "t": "why would you do that",
+      "m": "sad"
+    },
+    {
+      "t": "i think i broke something",
+      "m": "shocked"
+    },
+    {
+      "t": "I'M TELLING MY MOM",
+      "m": "angry"
+    },
+    {
+      "t": "i hate you so much right now",
+      "m": "angry"
+    },
+    {
+      "t": "is it over?",
+      "m": "sad"
+    },
+    {
+      "t": "i'm gonna be sick",
+      "m": "shocked"
+    },
+    {
+      "t": "that's why i'm still a virgin. people throw me",
+      "m": "angry"
+    },
+    {
+      "t": "you're a monster",
+      "m": "sad"
+    }
+  ],
+  "drop": [
+    {
+      "t": "...ok",
+      "m": "neutral"
+    },
+    {
+      "t": "thanks, i guess",
+      "m": "neutral"
+    },
+    {
+      "t": "was that necessary?",
+      "m": "sad"
+    },
+    {
+      "t": "is it over man?",
+      "m": "sad"
+    }
+  ],
+  "bin": [
+    {
+      "t": "hello?",
+      "m": "sad"
+    },
+    {
+      "t": "it smells in here",
+      "m": "sad"
+    },
+    {
+      "t": "LET ME OUT!!",
+      "m": "angry"
+    },
+    {
+      "t": "is it over man?",
+      "m": "sad"
+    },
+    {
+      "t": "it's dark",
+      "m": "sad"
+    },
+    {
+      "t": "i can hear you out there",
+      "m": "creepy"
+    },
+    {
+      "t": "there's a banana peel on my head",
+      "m": "neutral"
+    },
+    {
+      "t": "this is my life now",
+      "m": "sad"
+    },
+    {
+      "t": "i'm not mad. i'm in a bin",
+      "m": "angry"
+    },
+    {
+      "t": "FUCK YOU!!!!",
+      "m": "angry"
+    }
+  ]
+}

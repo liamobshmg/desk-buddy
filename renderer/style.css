@@ -1,0 +1,318 @@
+html, body {
+  margin: 0;
+  width: 400px;
+  height: 510px;
+  overflow: hidden;
+  background: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+#stage {
+  position: relative;
+  width: 400px;
+  height: 510px;
+  pointer-events: none;
+}
+
+/* ---------- speech bubble ---------- */
+#bubble {
+  position: absolute;
+  left: 50px;
+  width: 300px;
+  bottom: 372px;
+  text-align: center;
+}
+#bubble[hidden] { display: none; }
+#bubbleText {
+  display: inline-block;
+  max-width: 280px;
+  padding: 9px 14px 10px;
+  background: #fff;
+  color: #111;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  border: 3px solid #111;
+  border-radius: 16px;
+  position: relative;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+#bubbleText.shout {
+  font-size: 19px;
+  color: #b00010;
+  animation: shake 0.08s linear infinite;
+}
+#bubbleText::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -14px;
+  margin-left: -9px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-right: 3px solid #111;
+  border-bottom: 3px solid #111;
+  transform: rotate(45deg) skew(10deg, 10deg);
+}
+
+/* ---------- buddy ---------- */
+#buddy {
+  position: absolute;
+  left: 100px;
+  top: 150px;
+  width: 200px;
+  height: 320px;
+  pointer-events: auto;
+  cursor: grab;
+}
+#buddy.dragging { cursor: grabbing; }
+
+#shadow {
+  position: absolute;
+  left: 40px;
+  top: 304px;
+  width: 120px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.22);
+  filter: blur(2px);
+}
+
+#rig {
+  position: absolute;
+  inset: 0;
+  transform-origin: 100px 310px;
+}
+
+/* head: cutout photo drawn at 360x400, scaled to 200 wide */
+#headWrap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 222px;
+  transform-origin: 100px 215px;
+}
+#head {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 360px;
+  height: 400px;
+  transform: scale(0.5556);
+  transform-origin: 0 0;
+  --brow-r: 0deg;
+  --brow-y: 0px;
+  filter: drop-shadow(0 0 0 transparent);
+}
+#headImg { display: block; pointer-events: none; }
+
+.brow {
+  position: absolute;
+  top: 191px;
+  width: 66px;
+  height: 16px;
+  background: #0d0907;
+  border: 2px solid rgba(238, 224, 204, 0.6);
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: transform 0.14s ease-out;
+}
+.brow.l { left: 108px; transform: translateY(var(--brow-y)) rotate(var(--brow-r)); }
+.brow.r { left: 206px; transform: translateY(var(--brow-y)) rotate(calc(var(--brow-r) * -1)); }
+
+#mouth {
+  position: absolute;
+  left: 171px;
+  top: 317px;
+  width: 52px;
+  height: 0;
+  display: none;
+  background: #14050a;
+  border: 3px solid #2a0d12;
+  border-radius: 50% 50% 50% 50% / 32% 32% 68% 68%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+#mouth::after {
+  content: "";
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  bottom: -30%;
+  height: 55%;
+  border-radius: 50%;
+  background: #b03a48;
+}
+
+/* moods */
+#buddy[data-mood="angry"]  #head { --brow-r: 26deg;  --brow-y: 4px; }
+#buddy[data-mood="sad"]    #head { --brow-r: -22deg; --brow-y: 2px; }
+#buddy[data-mood="shocked"]#head { --brow-r: 0deg;   --brow-y: -20px; }
+#buddy[data-mood="creepy"] #head { --brow-r: -9deg;  --brow-y: -4px; }
+#buddy[data-mood="angry"] #headWrap.talking { animation: shake 0.09s linear infinite; }
+
+/* body */
+#body {
+  position: absolute;
+  left: 52px;
+  top: 206px;
+  width: 96px;
+  height: 76px;
+  background: #19191f;
+  border-radius: 20px 20px 10px 10px;
+  box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.25);
+}
+#body::before {
+  content: "";
+  position: absolute;
+  left: 26px;
+  top: 14px;
+  width: 44px;
+  height: 36px;
+  border-radius: 50% 50% 40% 40%;
+  background:
+    radial-gradient(circle at 35% 40%, #0000 0 5px, #cfcabd 5.5px 7px, #0000 7.5px),
+    radial-gradient(circle at 65% 40%, #0000 0 5px, #cfcabd 5.5px 7px, #0000 7.5px),
+    radial-gradient(ellipse at 50% 85%, #cfcabd 0 6px, #0000 6.5px),
+    #cfcabd33;
+  opacity: 0.8;
+}
+
+/* limbs */
+.limb { position: absolute; transform-origin: 50% 0; }
+.arm {
+  top: 208px;
+  width: 26px;
+  height: 28px;
+  transform-origin: 50% 13px;
+  rotate: calc(var(--s) * 7deg); /* resting: hanging slightly out */
+  animation: armIdle 3.2s ease-in-out infinite;
+}
+.arm.l { left: 38px; --s: 1; }
+.arm.r { left: 136px; --s: -1; animation-delay: -1.6s; }
+.arm::before { /* short sleeve, drawn over the forearm */
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 28px;
+  background: #19191f;
+  border-radius: 14px 14px 8px 8px;
+  z-index: 1;
+}
+.fore {
+  position: absolute;
+  left: 6px;
+  top: 22px;
+  width: 14px;
+  height: 30px;
+  background: #d9a27f;
+  border-radius: 7px;
+  transform-origin: 50% 6px;
+  rotate: calc(var(--s) * -8deg);
+  animation: foreIdle 3.2s ease-in-out infinite;
+  animation-delay: inherit;
+}
+.hand {
+  position: absolute;
+  left: -2px;
+  bottom: -9px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #d9a27f;
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+}
+.leg {
+  top: 276px;
+  width: 24px;
+  height: 36px;
+  background: #6c6a56;
+  border-radius: 2px;
+}
+.leg.l { left: 60px; }
+.leg.r { left: 116px; }
+.shoe {
+  position: absolute;
+  left: -6px;
+  bottom: -4px;
+  width: 34px;
+  height: 14px;
+  border-radius: 50% 50% 30% 30%;
+  background: #0b0b0e;
+}
+
+/* hopping: legs stay rigid and together (South Park); the window does the vertical arc */
+#buddy.walking #headWrap { animation: headHop 0.62s ease-in-out infinite; }
+#buddy.walking[data-dir="1"] #rig { rotate: 3deg; }
+#buddy.walking[data-dir="-1"] #rig { rotate: -3deg; }
+
+/* picked up */
+#buddy.dragging #rig { translate: 0 -10px; }
+#buddy.dragging #headWrap { animation: tremble 0.07s linear infinite; }
+#buddy.dragging .leg, #buddy.flying .leg { animation: legSway 0.4s ease-in-out infinite alternate; }
+#buddy.dragging #shadow, #buddy.flying #shadow { opacity: 0.35; }
+
+/* thrown: tumbling in the air */
+#buddy.flying #rig { transform-origin: 100px 170px; animation: tumble 0.4s ease-in-out infinite alternate; }
+
+/* got hurt: quick squash */
+#buddy.hurt #rig { animation: squash 0.3s ease-out 1; transform-origin: 100px 310px; }
+#buddy.flying.hurt #rig { animation: tumble 0.4s ease-in-out infinite alternate; }
+
+/* ---------- arms: shoulder + elbow, driven by what he's doing ---------- */
+/* talking: calm gesturing, right arm leads */
+#buddy.speaking .arm.r { animation: armGesture 0.95s ease-in-out infinite; }
+#buddy.speaking .arm.r .fore { animation: foreGesture 0.95s ease-in-out infinite; }
+#buddy.speaking .arm.l { animation: armGestureSmall 1.3s ease-in-out infinite; animation-delay: -0.4s; }
+#buddy.speaking .arm.l .fore { animation: foreGestureSmall 1.3s ease-in-out infinite; animation-delay: -0.4s; }
+/* angry: stiff arms, pumping fists */
+#buddy[data-mood="angry"].speaking .arm { animation: armPump 0.2s ease-in-out infinite; animation-delay: 0s; }
+#buddy[data-mood="angry"].speaking .arm.r { animation-direction: reverse; }
+#buddy[data-mood="angry"].speaking .fore { animation: forePump 0.2s ease-in-out infinite; animation-delay: 0s; }
+/* sad: limp, tucked in */
+#buddy[data-mood="sad"].speaking .arm { animation: armLimp 2.4s ease-in-out infinite; }
+#buddy[data-mood="sad"].speaking .fore { animation: foreLimp 2.4s ease-in-out infinite; }
+/* hopping: arms fling up on the way up, drop on landing */
+#buddy.walking .arm { animation: armHop 0.62s ease-in-out infinite; animation-delay: 0s; }
+#buddy.walking .fore { animation: foreHop 0.62s ease-in-out infinite; animation-delay: 0s; }
+/* held: hands up, panicked flapping. thrown: windmilling */
+#buddy.dragging .arm { animation: armPanic 0.2s ease-in-out infinite; animation-delay: 0s; }
+#buddy.dragging .arm.r { animation-direction: reverse; }
+#buddy.dragging .fore { animation: forePanic 0.2s ease-in-out infinite; animation-delay: 0s; }
+#buddy.flying .arm { animation: armWindmill 0.45s ease-in-out infinite alternate; animation-delay: 0s; }
+#buddy.flying .arm.r { animation-direction: alternate-reverse; }
+#buddy.flying .fore { animation: foreWindmill 0.3s ease-in-out infinite alternate; animation-delay: 0s; }
+
+@keyframes armIdle   { 0%, 100% { rotate: calc(var(--s) * 8deg); }  50% { rotate: calc(var(--s) * 12deg); } }
+@keyframes foreIdle  { 0%, 100% { rotate: calc(var(--s) * -6deg); } 50% { rotate: calc(var(--s) * -12deg); } }
+@keyframes armGesture  { 0%, 100% { rotate: calc(var(--s) * 38deg); } 50% { rotate: calc(var(--s) * 78deg); } }
+@keyframes foreGesture { 0%, 100% { rotate: calc(var(--s) * -35deg); } 50% { rotate: calc(var(--s) * -75deg); } }
+@keyframes armGestureSmall  { 0%, 100% { rotate: calc(var(--s) * 14deg); } 50% { rotate: calc(var(--s) * 34deg); } }
+@keyframes foreGestureSmall { 0%, 100% { rotate: calc(var(--s) * -14deg); } 50% { rotate: calc(var(--s) * -38deg); } }
+@keyframes armPump  { 0%, 100% { rotate: calc(var(--s) * 16deg); } 50% { rotate: calc(var(--s) * 34deg); } }
+@keyframes forePump { 0%, 100% { rotate: calc(var(--s) * -50deg); } 50% { rotate: calc(var(--s) * -88deg); } }
+@keyframes armLimp  { 0%, 100% { rotate: calc(var(--s) * 3deg); }  50% { rotate: calc(var(--s) * 6deg); } }
+@keyframes foreLimp { 0%, 100% { rotate: calc(var(--s) * -3deg); } 50% { rotate: calc(var(--s) * -8deg); } }
+@keyframes armHop  { 0%, 100% { rotate: calc(var(--s) * 6deg); } 40% { rotate: calc(var(--s) * 62deg); } }
+@keyframes foreHop { 0%, 100% { rotate: calc(var(--s) * -6deg); } 40% { rotate: calc(var(--s) * -30deg); } }
+@keyframes headHop { 0%, 100% { rotate: 0deg; scale: 1 0.96; } 40% { rotate: 0deg; scale: 1 1.03; } }
+@keyframes armPanic  { 0%, 100% { rotate: calc(var(--s) * 120deg); } 50% { rotate: calc(var(--s) * 150deg); } }
+@keyframes forePanic { 0%, 100% { rotate: calc(var(--s) * -10deg); } 50% { rotate: calc(var(--s) * -55deg); } }
+@keyframes armWindmill  { from { rotate: calc(var(--s) * 60deg); }  to { rotate: calc(var(--s) * 175deg); } }
+@keyframes foreWindmill { from { rotate: calc(var(--s) * -10deg); } to { rotate: calc(var(--s) * -60deg); } }
+
+@keyframes legSway { from { rotate: -9deg; } to { rotate: 9deg; } }
+@keyframes tremble { 0% { translate: -1.5px 0; } 50% { translate: 1.5px 1px; } 100% { translate: -1.5px 0; } }
+@keyframes tumble { from { rotate: -20deg; } to { rotate: 20deg; } }
+@keyframes squash { 0% { scale: 1.15 0.8; } 100% { scale: 1 1; } }
+@keyframes shake { 0% { translate: -2px 0; } 50% { translate: 2px 0; } 100% { translate: -2px 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  #buddy.walking #headWrap,
+  .arm, .fore, .leg { animation: none !important; }
+}
